@@ -5,6 +5,7 @@ import MenuCategory from "@/menu/MenuCategory";
 import { MenuItem } from "@/types";
 
 export default function MenuItems() {
+
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function MenuItems() {
         rounded-[10px]
       "
     >
-      <h2 className="text-3xl font-bold mb-6">Menu</h2>
+      <h2 className="text-3xl font-bold mb-6">Kitchen Menu</h2>
 
       <div className="grid grid-cols-2 gap-5">
         {/* Left column */}

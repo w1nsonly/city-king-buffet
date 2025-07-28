@@ -6,13 +6,14 @@ interface MenuProps {
 }
 
 export default function MenuCategory({ category, items}: MenuProps) {
+  
   return (
+
     <div className="mb-6">
       <h3 className="text-xl font-semibold mb-2">{category}</h3>
       <ul className="list-none p-0 m-0">
         {items.map((item) => (
-          <li
-            key={item.id_number ?? item.name}
+          <li key={item.id_number ?? item.name}
             className="
               p-2.5 
               border-b border-gray-200 
@@ -22,7 +23,7 @@ export default function MenuCategory({ category, items}: MenuProps) {
               last:border-0 
               cursor-pointer
             "
-          >
+            >
             <span>
               {item.id_number ? `${item.id_number}. ` : ""}
               {item.name}
@@ -34,5 +35,6 @@ export default function MenuCategory({ category, items}: MenuProps) {
         ))}
       </ul>
     </div>
+
   );
 }
