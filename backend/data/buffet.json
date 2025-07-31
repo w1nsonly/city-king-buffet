@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Lunch Buffet",
+    "price": "11.99",
+    "category": "Lunch Buffet"
+  },
+  {
+    "id": 2,
+    "name": "L. Kid 3-5 Year Old",
+    "price": "6.99",
+    "category": "Lunch Buffet"
+  },
+  {
+    "id": 3,
+    "name": "L. Kid 6-10 Year Old",
+    "price": "7.99",
+    "category": "Lunch Buffet"
+  },
+  {
+    "id": 4,
+    "name": "Dinner Buffet",
+    "price": "14.99",
+    "category": "Dinner Buffet"
+  },
+  {
+    "id": 5,
+    "name": "D. Kid 3-5 Year Old",
+    "price": "7.99",
+    "category": "Dinner Buffet"
+  },
+  {
+    "id": 6,
+    "name": "D. Kid 6-10 Year Old",
+    "price": "9.99",
+    "category": "Dinner Buffet"
+  },
+  {
+    "id": 7,
+    "name": "Weekend Dinner Buffet (Fri-Sun)",
+    "price": "15.99",
+    "category": "Weekend Buffet"
+  },
+  { "id": 8, "name": "To Go", "price": "7.49", "category": "To Go" },
+  { "id": 9, "name": "Buffet To Go", "price": "10.99", "category": "To Go" },
+  { "id": 10, "name": "Drink", "price": "2.50", "category": "To Go" }
+]
