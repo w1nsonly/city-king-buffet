@@ -5,7 +5,7 @@ import MenuCategory from "@/menu/MenuCategory";
 import { MenuItem } from "@/types";
 
 export default function MenuItems() {
-
+  
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
 
   useEffect(() => {
