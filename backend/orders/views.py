@@ -14,11 +14,26 @@ from langchain_openai           import OpenAIEmbeddings
 from langchain.chat_models      import ChatOpenAI
 from langchain.chains           import RetrievalQA
 from langchain_community.vectorstores import Chroma
+from langchain.prompts.chat import (
+    ChatPromptTemplate,
+    SystemMessagePromptTemplate,
+    HumanMessagePromptTemplate,
+)
 
 # OPENAI_API_KEY is in the environment
 os.environ.setdefault("OPENAI_API_KEY", "")
 
 # Create your views here.
+SYSTEM = "You are City King Buffet's friendly AI. Always begin your reply with 'My friend!' then answer the question."
+prompt = ChatPromptTemplate.from_messages([
+    SystemMessagePromptTemplate.from_template(SYSTEM),
+    HumanMessagePromptTemplate.from_template(
+        "Here's some background:\n\n"
+        "{context}\n\n"
+        "Now answer:\n\n"
+        "{question}"
+    ),
+])
 
 def chat(request):
     q = request.GET.get("q","")
@@ -30,9 +45,10 @@ def chat(request):
         embedding_function=OpenAIEmbeddings()
     )
     qa = RetrievalQA.from_chain_type(
-        llm=ChatOpenAI(model="gpt-4o-mini"),
+        llm=ChatOpenAI(model_name="gpt-4o-mini"),
         chain_type="stuff",
-        retriever=store.as_retriever(k=4)
+        retriever=store.as_retriever(k=4),
+        chain_type_kwargs={"prompt": prompt},
     )
     answer = qa.run(q)
     return JsonResponse({"answer": answer})
