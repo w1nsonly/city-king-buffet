@@ -7,10 +7,12 @@ export type ChatMessageType = { role: "user" | "model"; text: string };
 
 // 2) Define the props shape for ChatForm
 interface ChatFormProps {
-  setChatHistory: React.Dispatch<React.SetStateAction<ChatMessageType[]>>;
+    chatHistory: ChatMessageType[];                                         // an array of messages
+    setChatHistory: React.Dispatch<React.SetStateAction<ChatMessageType[]>>; // setter
+    generateAIResponse: (history: ChatMessageType[]) => void;               //custom callback
 }
 
-export default function ChatForm({ setChatHistory } : ChatFormProps ) {
+export default function ChatForm({ chatHistory, setChatHistory, generateAIResponse } : ChatFormProps ) {
     const inputRef = useRef<HTMLInputElement>(null)
 
     const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -22,8 +24,13 @@ export default function ChatForm({ setChatHistory } : ChatFormProps ) {
         // Update chat history with the user's message
         setChatHistory(history => [...history, { role: "user", text: userMessage}])
 
-        // Update chat history with the user's message
-       setTimeout(() => setChatHistory(history => [...history,{ role: "model", text: "Thinking..." }]),600)
+        // Delay 600 ms before shwoing "Thinking... " and generating response
+        setTimeout(() => {
+                // Thinking place holder for the AI's response
+                setChatHistory((history) => [...history, { role: "model", text: "Thinking..." }]);
+                // Call the function to generate the AI's response
+                generateAIResponse([...chatHistory, { role: "user", text: userMessage }])
+        }, 600);
     }
     
     return (

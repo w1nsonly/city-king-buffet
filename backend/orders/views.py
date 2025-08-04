@@ -20,6 +20,7 @@ from langchain.prompts.chat import (
     HumanMessagePromptTemplate,
 )
 
+
 # OPENAI_API_KEY is in the environment
 os.environ.setdefault("OPENAI_API_KEY", "")
 
