@@ -6,6 +6,7 @@ import ChatMessage from "./ChatMessage";
 
 export default function ChatBox() {
     const [chatHistory, setChatHistory] = useState<ChatMessageType[]>([])
+    const chatRef = useRef<HTMLDivElement | null>(null)
    
 
     const generateAIResponse = async (history: ChatMessageType[]) => {
@@ -37,20 +38,7 @@ export default function ChatBox() {
                     }
                     return newHistory;
                 });
-            } else {
-                // Handle error case
-                console.error("API error:", data);
-                setChatHistory(prevHistory => {
-                    const newHistory = [...prevHistory];
-                    for (let i = newHistory.length - 1; i >= 0; i--) {
-                        if (newHistory[i].role === "model" && newHistory[i].text === "Thinking...") {
-                            newHistory[i].text = `Error: ${data.error || 'Unknown error'}`;
-                            break;
-                        }
-                    }
-                    return newHistory;
-                });
-            }
+            } 
         } catch (error) {
             console.error("Fetch error:", error);
             // Replace "Thinking..." with error message
@@ -58,7 +46,7 @@ export default function ChatBox() {
                 const newHistory = [...prevHistory];
                 for (let i = newHistory.length - 1; i >= 0; i--) {
                     if (newHistory[i].role === "model" && newHistory[i].text === "Thinking...") {
-                        newHistory[i].text = "Connection error. Is your Django server running on port 8000?";
+                        newHistory[i].text = "Something went wrong!";
                         break;
                     }
                 }
@@ -66,11 +54,17 @@ export default function ChatBox() {
             });
         }
     };
+
+    useEffect(() => {
+        // Auto-scroll whenever chat history updates
+        if (!chatRef.current) return
+        chatRef.current.scrollTo({top: chatRef.current.scrollHeight, behavior: "smooth"});
+    },[chatHistory]);
     
     return (
         <div className="chatbox-container max-w-2xl mx-auto bg-white rounded-lg shadow-lg border border-red-200 overflow-hidden">
             {/* ChatBox Messages */}
-            <div className="chat-messages h-96 overflow-y-auto p-4 space-y-4 bg-red-50">
+            <div ref={chatRef} className="chat-messages h-96 overflow-y-auto p-4 space-y-4 bg-red-50">
                 <div className="AI Chat flex justify-start">
                     <div className="bg-white border border-red-200 rounded-2xl rounded-bl-md px-4 py-2 max-w-xs shadow-sm">
                         <p className="text-red-900 text-sm">Hello, how could I help you?</p>
@@ -90,7 +84,6 @@ export default function ChatBox() {
             <div className="chat-input border-t border-red-200 p-4 bg-white">
                 <ChatForm chatHistory={chatHistory} setChatHistory={setChatHistory} generateAIResponse={generateAIResponse}/>
             </div>
-    
         </div>
     )
 }
