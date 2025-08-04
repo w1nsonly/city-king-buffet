@@ -1,5 +1,6 @@
+# restaurant/serializers.py
 from rest_framework import serializers
-from .models import BuffetItem, MenuItem, OrderInfo
+from .models import BuffetItem, MenuItem
 
 class BuffetItemSerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,8 +11,3 @@ class MenuItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = MenuItem
         fields = '__all__'  # Includes all fields (id_number, name, price, category)
-
-class OrderSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = OrderInfo
-        fields = '__all__'  # Includes all fields (customer info, items, price)

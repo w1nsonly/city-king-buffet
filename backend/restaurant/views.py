@@ -1,7 +1,8 @@
+# restaurant/views.py
 from django.shortcuts import render
 from rest_framework import generics
-from .models import BuffetItem, MenuItem, OrderInfo
-from .serializers import BuffetItemSerializer, MenuItemSerializer, OrderSerializer
+from .models import BuffetItem, MenuItem
+from .serializers import BuffetItemSerializer, MenuItemSerializer
 from django.http import JsonResponse
 
 import os
@@ -63,10 +64,4 @@ class BuffetItemList(generics.ListAPIView):
 class MenuItemList(generics.ListAPIView):
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
-
-# POST an order
-class OrderCreate(generics.CreateAPIView):
-    queryset = OrderInfo.objects.all()
-    serializer_class = OrderSerializer
-
 

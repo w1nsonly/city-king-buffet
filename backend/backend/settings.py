@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 
     "rest_framework",  # Django REST Framework
     "corsheaders",  # CORS headers
-    "orders",  # restaurant orders app
+    "restaurant"
 
 
 ]

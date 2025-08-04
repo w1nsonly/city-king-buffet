@@ -11,7 +11,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
 django.setup()
 # --------------------------------------------------------------
 
-from orders.models import MenuItem
+from restaurant.models import MenuItem
 
 # Dictionary of menu categories
 

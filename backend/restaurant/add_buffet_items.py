@@ -11,7 +11,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
 django.setup()
 # --------------------------------------------------------------
 
-from orders.models import BuffetItem
+from restaurant.models import BuffetItem
 
 buffet_items = {
         "Lunch Buffet": [

@@ -14,7 +14,7 @@ export default function ChatBox() {
         const latestMessage = history[history.length - 1];
         if (latestMessage.role !== "user") return;
 
-        const url = `http://127.0.0.1:8000/api/chat?q=${encodeURIComponent(latestMessage.text)}`;
+        const url = `http://127.0.0.1:8000/restaurant/chat?q=${encodeURIComponent(latestMessage.text)}`;
         console.log("Calling URL:", url);
 
         try {

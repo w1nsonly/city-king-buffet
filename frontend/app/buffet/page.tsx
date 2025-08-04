@@ -11,7 +11,7 @@ export default function BuffetItems() {
 
     useEffect(() => {
         axios
-        .get<BuffetItem[]>("http://127.0.0.1:8000/orders/buffet/")
+        .get<BuffetItem[]>("http://127.0.0.1:8000/restaurant/menu/buffet")
         .then((res) => setMenuItems(res.data))
         .catch((err) => console.error("Error fetching menu:", err));
     }, []);
