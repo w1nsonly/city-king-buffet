@@ -19,61 +19,63 @@ export default function KitchenMenu() {
     }, []);
 
   return (
-    <div>
+    <>
         <Header />
-        <div className="max-w-[1000px] mx-auto mt-5">
-        <Link href="/#home" className="inline-flex items-center gap-2 px-4 py-2 bg-[#830e0e] text-[bisque] rounded-full shadow-md transition-all duration-200 hover:text-[white] hover:bg-[#a83232] hover:gap-3">
-            <span className="text-lg">←</span> Back to Buffet
-        </Link>
-        </div>
-        <div className="max-w-[1000px] mx-auto my-5 p-5 bg-[#fffdf5] shadow-[0_4px_8px_rgba(0,0,0,0.1)] rounded-[10px]">
-        <h2 className="text-center text-3xl font-bold mb-6">Kitchen Menu</h2>
-        <div className="grid grid-cols-2 gap-5">
-            {/* Left column */}
-            <div className="flex flex-col gap-5">
-            {[
-                "Appetizers",
-                "Soups",
-                "Chow Mein",
-                "Chop Suey",
-                "Lo Mein",
-                "Mei Fun",
-                "Fried Rice",
-                "Egg Foo Young",
-                "Vegetable",
-                "Shrimp",
-                "Beef",
-                "Pork",
-                "Chicken",
-            ].map((category) => (
-                <MenuCategory
-                key={category}
-                category={category}
-                items={menuItems.filter((i) => i.category === category)}
-                />
-            ))}
+        <div className="bg-[url('/lightbeige.jpg')] py-10">
+            <div className="max-w-[1000px] mx-auto">
+                <Link href="/#home" className="inline-flex items-center gap-2 px-4 py-2 bg-[#830e0e] text-[bisque] rounded-full shadow-md transition-all duration-200 hover:text-[white] hover:bg-[#a83232] hover:gap-3">
+                    <span className="text-lg">←</span> Back to Buffet
+                </Link>
             </div>
+            <div className="mt-4 max-w-[1000px] mx-auto p-5 bg-[#fffdf5] shadow-[0_4px_8px_rgba(0,0,0,0.1)] rounded-[10px]">
+                <h2 className="text-center text-3xl font-bold mb-6">Kitchen Menu</h2>
+                <div className="grid grid-cols-2 gap-5">
+                    {/* Left column */}
+                    <div className="flex flex-col gap-5">
+                    {[
+                        "Appetizers",
+                        "Soups",
+                        "Chow Mein",
+                        "Chop Suey",
+                        "Lo Mein",
+                        "Mei Fun",
+                        "Fried Rice",
+                        "Egg Foo Young",
+                        "Vegetable",
+                        "Shrimp",
+                        "Beef",
+                        "Pork",
+                        "Chicken",
+                    ].map((category) => (
+                        <MenuCategory
+                        key={category}
+                        category={category}
+                        items={menuItems.filter((i) => i.category === category)}
+                        />
+                    ))}
+                    </div>
 
-            {/* Right column */}
-            <div className="flex flex-col gap-5">
-            {[
-                "Lunch Combos",
-                "Special Combos",
-                "Chef Specials",
-                "Diet Menu",
-                "Sushi Rolls",
-                "Side Orders",
-            ].map((category) => (
-                <MenuCategory
-                key={category}
-                category={category}
-                items={menuItems.filter((i) => i.category === category)}
-                />
-            ))}
+                    {/* Right column */}
+                    <div className="flex flex-col gap-5">
+                    {[
+                        "Lunch Combos",
+                        "Special Combos",
+                        "Chef Specials",
+                        "Diet Menu",
+                        "Sushi Rolls",
+                        "Side Orders",
+                    ].map((category) => (
+                        <MenuCategory
+                        key={category}
+                        category={category}
+                        items={menuItems.filter((i) => i.category === category)}
+                        />
+                    ))}
+                    </div>
+                </div>
             </div>
-        </div>
         </div>
         <Footer />
-    </div>
+    </>
   );
 }

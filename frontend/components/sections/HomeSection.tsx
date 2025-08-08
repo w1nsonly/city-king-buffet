@@ -38,7 +38,6 @@ export default function HomeSection() {
           </div>
         </div>
       </div>
-      <br />
     </main>
   );
 }

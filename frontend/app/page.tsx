@@ -12,10 +12,12 @@ export default function Home() {
       <Header />
         <section id="home">
           <HomeSection />
-          </section>
+        </section>
+
         <section id="buffet">
           <BuffetSection />
         </section>
+        
         <section id="question">
           <QuestionSection />
         </section>

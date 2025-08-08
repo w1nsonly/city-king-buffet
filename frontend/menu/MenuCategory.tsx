@@ -8,7 +8,6 @@ interface MenuProps {
 export default function MenuCategory({ category, items}: MenuProps) {
   
   return (
-
     <div className="mb-6">
       <h3 className="text-xl font-semibold mb-2">{category}</h3>
       <ul className="list-none p-0 m-0">
@@ -20,8 +19,7 @@ export default function MenuCategory({ category, items}: MenuProps) {
               flex justify-between items-center 
               text-lg text-gray-700 
               hover:bg-red-100 
-              last:border-0 
-              cursor-pointer
+              last:border-0
             "
             >
             <span>
@@ -35,6 +33,5 @@ export default function MenuCategory({ category, items}: MenuProps) {
         ))}
       </ul>
     </div>
-
   );
 }

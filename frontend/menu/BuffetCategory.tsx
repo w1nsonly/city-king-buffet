@@ -21,7 +21,6 @@ export default function BuffetCategory({category, items} : BuffetProps) {
                         text-lg text-gray-700 
                         hover:bg-red-100 
                         last:border-0 
-                        cursor-pointer
                         "
                         >
                         <span>

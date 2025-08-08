@@ -17,44 +17,46 @@ export default function BuffetSection() {
     }, []);
 
     return (
-        <div className="max-w-[1000px] mx-auto my-5 p-5 bg-[#fffdf5] shadow-[0_4px_8px_rgba(0,0,0,0.1)] rounded-[10px]">
-            <h2 className="text-center text-3xl font-bold mb-6">Buffet Menu</h2>
-            <div className="grid grid-cols-2 gap-5">
-                {/* Left column */}
-                <div className="flex flex-col gap-5">
-                    {[
-                    "Lunch Buffet",
-                    "To Go",
-                    
-                    ].map((category) => (
-                    <BuffetCategory
-                        key={category}
-                        category={category}
-                        items={menuItems.filter((i) => i.category === category)}
-                    />
-                    ))}
+        <div className="bg-[url('/lightbeige.jpg')] py-10">
+            <div className="max-w-[1000px] mx-auto p-5 bg-[#fffdf5] shadow-[0_4px_8px_rgba(0,0,0,0.1)] rounded-[10px]">
+                <h2 className="text-center text-3xl font-bold mb-6">Buffet Menu</h2>
+                <div className="grid grid-cols-2 gap-5">
+                    {/* Left column */}
+                    <div className="flex flex-col gap-5">
+                        {[
+                        "Lunch Buffet",
+                        "To Go",
+                        
+                        ].map((category) => (
+                        <BuffetCategory
+                            key={category}
+                            category={category}
+                            items={menuItems.filter((i) => i.category === category)}
+                        />
+                        ))}
+                    </div>
+            
+                    {/* Right column */}
+                    <div className="flex flex-col gap-5">
+                        {[
+                        "Dinner Buffet",
+                        "Weekend Buffet",
+                        
+                        ].map((category) => (
+                        <BuffetCategory
+                            key={category}
+                            category={category}
+                            items={menuItems.filter((i) => i.category === category)}
+                        />
+                        ))}
+                    </div>
                 </div>
-        
-                {/* Right column */}
-                <div className="flex flex-col gap-5">
-                    {[
-                    "Dinner Buffet",
-                    "Weekend Buffet",
-                    
-                    ].map((category) => (
-                    <BuffetCategory
-                        key={category}
-                        category={category}
-                        items={menuItems.filter((i) => i.category === category)}
-                    />
-                    ))}
-                </div>
-            </div>
 
-            <div className="mt-6 flex gap-3">
-                <a href="/kitchen" className="px-5 py-2 rounded-md border border-[#7f1d1d] text-[#7f1d1d] hover:bg-[#7f1d1d] hover:text-white transition">
-                    View Kitchen Menu
-                </a>
+                <div className="mt-6 flex gap-3">
+                    <a href="/kitchen" className="px-5 py-2 rounded-md border border-[#7f1d1d] text-[#7f1d1d] hover:bg-[#7f1d1d] hover:text-white transition">
+                        View Kitchen Menu
+                    </a>
+                </div>
             </div>
         </div>
     )
