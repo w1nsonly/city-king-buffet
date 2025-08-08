@@ -1,9 +1,9 @@
 import Header from "@/components/common/Header";
-import HomeBody from "@/components/sections/HomeSection";
-import BuffetItems from "../components/sections/BuffetSection";
-import MenuItems from "../components/sections/MenuSection";
-import QuestionPage from "../components/sections/QuestionSection";
+import HomeSection from "@/components/sections/HomeSection";
+import BuffetSection from "@/components/sections/BuffetSection";
+import QuestionSection from "@/components/sections/QuestionSection";
 import Footer from "@/components/common/Footer";
+
 
 export default function Home() {
   
@@ -11,19 +11,13 @@ export default function Home() {
     <>
       <Header />
         <section id="home">
-          <HomeBody />
-        </section>
-
+          <HomeSection />
+          </section>
         <section id="buffet">
-          <BuffetItems />
+          <BuffetSection />
         </section>
-
-        <section id="menu">
-          <MenuItems />
-        </section>
-
         <section id="question">
-          <QuestionPage />
+          <QuestionSection />
         </section>
       <Footer />
     </>  

@@ -27,6 +27,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding: 60px;
 }
 
 @keyframes arcIn {

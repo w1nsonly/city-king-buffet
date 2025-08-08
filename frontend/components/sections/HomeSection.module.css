@@ -35,8 +35,8 @@
 /* Card Styles */
 .card {
     position: relative;
-    width: 320px;
-    height: 280px;
+    width: 300px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     gap: 20px;

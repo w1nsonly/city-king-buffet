@@ -4,7 +4,7 @@ export default function HomeSection() {
 
   return (
     <main>
-      <div className="flex flex-col items-center justify-center gap-35 w-full h-150 bg-[url('/citykingbuffet1.jpg')] bg-cover bg-center bg-no-repeat">
+      <div className="flex flex-col items-center justify-center gap-60 w-full h-180 bg-[url('/citykingbuffet1.jpg')] bg-cover bg-center bg-no-repeat">
         <h2  className="text-center text-[calc(4px+3.5vw)] text-white font-bold mb-[4%] opacity-0 animate-[arcIn_1.4s_ease-out_forwards]">
           City King Buffet
         </h2>
