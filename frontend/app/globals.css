@@ -24,3 +24,22 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes arcIn {
+  0% {
+    transform: translateY(-80px) translateX(-50px) rotate(-5deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-40px) translateX(0px) rotate(0deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}
