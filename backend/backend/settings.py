@@ -66,11 +66,26 @@ MIDDLEWARE = [
 ]
 
 # For development, you can specify explicit origins.
-# In production, replace with your frontend's domain(s).
+# --- CORS/CSRF for frontend ↔ backend ---
+# Specific allowed origins (exact hosts)
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    "http://localhost:3000",                # local Next.js
+    "https://citykingbuffetky.com",         # prod domain (frontend)
+    "https://www.citykingbuffetky.com",
 ]
-CORS_ALLOW_ALL_ORIGINS = os.environ.get("CORS_ALLOW_ALL_ORIGINS", "True") == "True"
+
+# Allow Vercel preview/staging sites like https://something.vercel.app
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.vercel\.app$",
+]
+
+# If POST/PUT/DELETE from the frontend, add CSRF trusted origins too:
+CSRF_TRUSTED_ORIGINS = [
+    "https://citykingbuffetky.com",
+    "https://www.citykingbuffetky.com",
+    # Optional but useful when testing forms/mutations on previews:
+    "https://*.vercel.app",
+]
 
 ROOT_URLCONF = 'backend.urls'
 

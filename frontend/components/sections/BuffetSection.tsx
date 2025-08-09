@@ -10,10 +10,12 @@ import { BuffetItem } from "@/types";
 export default function BuffetSection() {
 
     const [menuItems, setMenuItems] = useState<BuffetItem[]>([]);
+    
+    const API_BASE = process.env.NEXT_PUBLIC_API_BASE!;
 
     useEffect(() => {
         axios
-        .get<BuffetItem[]>("http://127.0.0.1:8000/restaurant/menu/buffet")
+        .get<BuffetItem[]>(`${API_BASE}restaurant/menu/buffet`)
         .then((res) => setMenuItems(res.data))
         .catch((err) => console.error("Error fetching menu:", err));
     }, []);

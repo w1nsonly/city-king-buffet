@@ -9,13 +9,15 @@ export default function ChatBox() {
     const [chatHistory, setChatHistory] = useState<ChatMessageType[]>([])
     const chatRef = useRef<HTMLDivElement | null>(null)
 
+    const API_BASE = process.env.NEXT_PUBLIC_API_BASE!;
+
     
     const generateAIResponse = async (history: ChatMessageType[]) => {
         // Get the latest user message
         const latestMessage = history[history.length - 1];
         if (latestMessage.role !== "user") return;
 
-        const url = `http://127.0.0.1:8000/restaurant/chat?q=${encodeURIComponent(latestMessage.text)}`;
+        const url = `${API_BASE}restaurant/chat?q=${encodeURIComponent(latestMessage.text)}`;
         console.log("Calling URL:", url);
 
         try {

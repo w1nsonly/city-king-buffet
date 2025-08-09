@@ -13,9 +13,11 @@ import Link from "next/link";
 export default function KitchenMenu() {
     const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
 
+    const API_BASE = process.env.NEXT_PUBLIC_API_BASE!;
+
     useEffect(() => {
         axios
-        .get<MenuItem[]>("http://127.0.0.1:8000/restaurant/menu/regular")
+        .get<MenuItem[]>(`${API_BASE}restaurant/menu/regular`)
         .then((res) => setMenuItems(res.data))
         .catch((err) => console.error("Error fetching menu:", err));
     }, []);
