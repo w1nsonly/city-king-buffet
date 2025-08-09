@@ -2,6 +2,8 @@
 
 Official website for **[City King Buffet](https://citykingbuffetky.com)** — a full-stack application that allows customers to view buffet and kitchen menus, check prices, and interact with an AI-powered chatbox for restaurant-related questions.
 
+![City King Buffet Homepage](./imgs/citykinghomepage.png)
+
 ---
 
 ## Why This Project Matters
