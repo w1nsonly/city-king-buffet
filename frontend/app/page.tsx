@@ -11,19 +11,21 @@ export default function Home() {
   
   return (
     <>
-      <Header />
-        <section id="home">
-          <HomeSection />
-        </section>
+      <main>
+        <Header />
+          <section id="home">
+            <HomeSection />
+          </section>
 
-        <section id="buffet">
-          <BuffetSection />
-        </section>
-        
-        <section id="question">
-          <QuestionSection />
-        </section>
-      <Footer />
+          <section id="buffet">
+            <BuffetSection />
+          </section>
+          
+          <section id="question">
+            <QuestionSection />
+          </section>
+        <Footer />
+      </main>
     </>  
   );
 }
