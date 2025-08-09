@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.http import HttpResponse
 from django.urls import path, include
+from restaurant.views import keepalive
 
 def healthz(_):
     return HttpResponse("ok")
@@ -25,4 +26,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('restaurant/', include('restaurant.urls')),
     path("healthz/", healthz),
+     path('keepalive/', keepalive),
 ]

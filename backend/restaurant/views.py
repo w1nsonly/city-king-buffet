@@ -5,6 +5,7 @@ from rest_framework import generics
 from .models import BuffetItem, MenuItem
 from .serializers import BuffetItemSerializer, MenuItemSerializer
 from django.http import JsonResponse
+from django.db import connection
 
 import os
 import json
@@ -141,4 +142,15 @@ class BuffetItemList(generics.ListAPIView):
 class MenuItemList(generics.ListAPIView):
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
+
+
+
+# To keep backend alive
+def keepalive(request):
+    # Simple DB query to keep it warm too
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT 1;")
+        cursor.fetchone()
+
+    return JsonResponse({"ok": True})
 
