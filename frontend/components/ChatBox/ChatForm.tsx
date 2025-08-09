@@ -1,37 +1,40 @@
 // ChatForm.tsx
 "use client"
-import React, { useRef, FormEvent } from 'react'
+import { Dispatch, SetStateAction, useRef, FormEvent } from 'react'
 
 // 1) Define message shape
 export type ChatMessageType = { role: "user" | "model"; text: string };
 
 // 2) Define the props shape for ChatForm
-interface ChatFormProps {
-    chatHistory: ChatMessageType[];                                         // an array of messages
-    setChatHistory: React.Dispatch<React.SetStateAction<ChatMessageType[]>>; // setter
-    generateAIResponse: (history: ChatMessageType[]) => void;               //custom callback
+interface ChatFormProps {                          
+    setChatHistory: Dispatch<SetStateAction<ChatMessageType[]>>; // setter
+    generateAIResponse: (history: ChatMessageType[]) => void;    //custom callback
 }
 
-export default function ChatForm({ chatHistory, setChatHistory, generateAIResponse } : ChatFormProps ) {
+export default function ChatForm({ setChatHistory, generateAIResponse } : ChatFormProps ) {
+
     const inputRef = useRef<HTMLInputElement>(null)
 
-    const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        const userMessage = inputRef.current?.value.trim()
-        if (!userMessage) return
-        inputRef.current!.value = ''
+    
+    const handleFormSubmit = (e: FormEvent<HTMLFormElement>): void => {
+        e.preventDefault();
+        const userMessage = inputRef.current?.value.trim();
+        if (!userMessage) return;
+        inputRef.current!.value = "";
 
-        // Update chat history with the user's message
-        setChatHistory(history => [...history, { role: "user", text: userMessage}])
+        // 1) Pure state update: no side-effects here
+        let next: ChatMessageType[] = [];
+        setChatHistory(prev => {
+            next = [...prev, { role: "user", text: userMessage }];
+            return next;
+        });
 
-        // Delay 600 ms before shwoing "Thinking... " and generating response
+        // 2) Side-effects AFTER state update (won’t double in StrictMode)
         setTimeout(() => {
-                // Thinking place holder for the AI's response
-                setChatHistory((history) => [...history, { role: "model", text: "Thinking..." }]);
-                // Call the function to generate the AI's response
-                generateAIResponse([...chatHistory, { role: "user", text: userMessage }])
+            setChatHistory(h => [...h, { role: "model", text: "Thinking..." }]);
+            generateAIResponse(next);
         }, 600);
-    }
+    };
     
     return (
         <form action="#" className="flex items-center gap-3 w-full" onSubmit={handleFormSubmit}>

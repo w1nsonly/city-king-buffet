@@ -15,8 +15,7 @@ export default function HomeSection() {
           <div className={styles.card}>
             <h3 className={styles.cardTitle}>Buffet</h3>
               <p className={styles.cardText}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Quibusdam, modi diuagwiudgawid !
+                Endless fresh flavors, all in a lively all-you-can-eat experience.
               </p>
           </div>
 
@@ -24,8 +23,7 @@ export default function HomeSection() {
           <div className={styles.card}>
             <h3 className={styles.cardTitle}>Hibachi</h3>
               <p className={styles.cardText}>
-                Sizzling grilled meats, seafood, and veggies cooked right in front
-                of you.
+                Fresh meats, seafood, and veggies grilled to perfection right before your eyes.
               </p>
           </div>
 

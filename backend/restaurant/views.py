@@ -22,6 +22,11 @@ from langchain.prompts.chat import (
     HumanMessagePromptTemplate,
 )
 
+from utils.pricing_and_hours import (
+    is_price_now_question, get_price_now_answer,
+    is_hours_today_question, get_hours_today_answer,
+    is_price_specific_day_question, get_price_for_weekday_answer,
+)
 
 # OPENAI_API_KEY is in the environment
 os.environ.setdefault("OPENAI_API_KEY", "")
@@ -85,8 +90,10 @@ def is_restaurant_question(question: str) -> bool:
         - "Who is Denny Dong?"
         - "What happened in 2014?"
         - "Do you have beer?"
+        - "How much is it right now?"
 
         Examples of NO:
+        - "Do you guys have senior discount?"
         - "What's the weather?"
         - "How do I fix my car?"
         - "Tell me about other restaurants"
@@ -106,16 +113,21 @@ def chat(request):
     q = request.GET.get("q", "").strip()
     if not q:
         return JsonResponse({"error": "No question provided"}, status=400)
-
-    # 1) Classification step
+    
+    # Short-circuits
+    if is_price_now_question(q):
+        return JsonResponse({"answer": get_price_now_answer()})
+    if is_price_specific_day_question(q):
+        return JsonResponse({"answer": get_price_for_weekday_answer(q)})
+    if is_hours_today_question(q):
+        return JsonResponse({"answer": get_hours_today_answer()})
+    
+    # Classification step
     if not is_restaurant_question(q):
-        return JsonResponse({
-            "answer": (
-                "Sorry, I can't answer that."
-            )
+        return JsonResponse({"answer": ("Sorry, I can't answer that.")
         })
 
-    # 2) Otherwise, run your normal QA pipeline
+    # 2) Otherwise, run normal QA pipeline
     answer = qa.run(q)
     return JsonResponse({"answer": answer})
 

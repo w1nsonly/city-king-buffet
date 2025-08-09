@@ -7,8 +7,8 @@ import ChatMessage from "./ChatMessage";
 export default function ChatBox() {
     const [chatHistory, setChatHistory] = useState<ChatMessageType[]>([])
     const chatRef = useRef<HTMLDivElement | null>(null)
-   
 
+    
     const generateAIResponse = async (history: ChatMessageType[]) => {
         // Get the latest user message
         const latestMessage = history[history.length - 1];
@@ -55,6 +55,21 @@ export default function ChatBox() {
         }
     };
 
+    const askQuestion = (question: string): void => {
+
+        let next: ChatMessageType[] = [];
+        setChatHistory(prev => {
+            next = [...prev, { role: "user", text: question }];
+            return next;
+        });
+
+        // side-effects OUTSIDE the updater (won’t double in StrictMode)
+        setTimeout(() => {
+            setChatHistory(h => [...h, { role: "model", text: "Thinking..." }]);
+            generateAIResponse(next);
+        }, 600);
+    };
+
     useEffect(() => {
         // Auto-scroll whenever chat history updates
         if (!chatRef.current) return
@@ -82,7 +97,19 @@ export default function ChatBox() {
             
             {/* ChatBox Input */}
             <div className="chat-input border-t border-red-200 p-4 bg-white">
-                <ChatForm chatHistory={chatHistory} setChatHistory={setChatHistory} generateAIResponse={generateAIResponse}/>
+                <div className="grid grid-cols-1 md:grid-cols-[auto,1fr] md:items-center md:gap-4">
+                    {/* Quick buttons: stack centered on mobile, left-docked on desktop */}
+                    <div className="order-1 md:order-none mb-3 md:mb-0 flex justify-center md:justify-start gap-2">
+                        <button type="button" onClick={() => askQuestion("How much is it right now?")} className="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-red-600 text-white shadow-sm hover:bg-red-700 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500">
+                            Price Today
+                        </button>
+                        <button type="button" onClick={() => askQuestion("What are your hours today?")} className="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-white text-red-700 border border-red-300 shadow-sm hover:bg-red-50 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500">
+                            Hours Today
+                        </button>
+                    </div>
+                    {/* Input + Send occupies the right column on desktop / full width on mobile */}
+                    <ChatForm setChatHistory={setChatHistory} generateAIResponse={generateAIResponse} />
+                </div>
             </div>
         </div>
     )
