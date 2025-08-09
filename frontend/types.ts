@@ -1,3 +1,5 @@
+// app/types.ts
+
 export interface MenuItem {
     id: number;
     id_number: string;

@@ -1,4 +1,5 @@
-// ChatBox.tsx
+// components/ChatBox/ChatBox.tsx
+
 "use client"
 import { useState, useEffect, useRef } from "react"
 import ChatForm, { ChatMessageType } from "./ChatForm";

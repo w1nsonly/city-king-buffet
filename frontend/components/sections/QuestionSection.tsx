@@ -1,3 +1,5 @@
+// components/sections/QuestionSection.tsx
+
 'use client'
 import ChatBox from "@/components/ChatBox/ChatBox"
 

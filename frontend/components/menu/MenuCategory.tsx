@@ -1,3 +1,5 @@
+// components/menu/MenuCategory.tsx
+
 import { MenuItem } from "@/types";
 
 interface MenuProps {

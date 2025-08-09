@@ -1,3 +1,5 @@
+// components/menu/BuffetCategory.tsx
+
 import { BuffetItem } from "@/types";
 
 interface BuffetProps {

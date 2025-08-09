@@ -1,3 +1,5 @@
+// components/sections/HomeSection.tsx
+
 import styles from "./HomeSection.module.css";
 
 export default function HomeSection() {

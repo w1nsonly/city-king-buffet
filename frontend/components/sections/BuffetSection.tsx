@@ -1,7 +1,9 @@
+// components/sections/BuffetSection.tsx
+
 'use client'
 import React, { useEffect, useState } from "react"
 import axios from "axios";
-import BuffetCategory from "@/menu/BuffetCategory";
+import BuffetCategory from "@/components/menu/BuffetCategory";
 import { BuffetItem } from "@/types";
 
 

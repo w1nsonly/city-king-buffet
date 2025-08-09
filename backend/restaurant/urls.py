@@ -1,4 +1,5 @@
 # restaurant/urls.py
+
 from django.urls import path
 from .views import BuffetItemList, MenuItemList
 from restaurant.views import chat

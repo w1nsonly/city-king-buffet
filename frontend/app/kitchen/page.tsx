@@ -1,7 +1,9 @@
+// app/kitchen/page.tsx
+
 'use client'
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import MenuCategory from "@/menu/MenuCategory";
+import MenuCategory from "@/components/menu/MenuCategory";
 import { MenuItem } from "@/types";
 
 import Header from "@/components/common/Header";

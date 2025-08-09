@@ -1,3 +1,5 @@
+// app/page.tsx
+
 import Header from "@/components/common/Header";
 import HomeSection from "@/components/sections/HomeSection";
 import BuffetSection from "@/components/sections/BuffetSection";

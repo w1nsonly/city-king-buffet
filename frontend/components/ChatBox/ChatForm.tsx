@@ -1,4 +1,5 @@
-// ChatForm.tsx
+// components/ChatBox/ChatForm.tsx
+
 "use client"
 import { Dispatch, SetStateAction, useRef, FormEvent } from 'react'
 

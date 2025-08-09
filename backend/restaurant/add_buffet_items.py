@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+# restaurant/add_menu_items.py
+
 import os
 import sys
 from decimal import Decimal
 import django
 
-# ----- adjust this path if you put the script elsewhere -----
 # Ensure manage.py’s parent dir is on sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
