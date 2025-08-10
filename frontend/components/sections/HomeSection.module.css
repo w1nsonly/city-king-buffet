@@ -37,17 +37,18 @@
 /* Card Styles */
 .card {
     position: relative;
-    width: 300px;
-    height: 250px;
+    width: 100%;
+    max-width: 22rem;
+    height: 200px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, 
-        rgba(255, 215, 0, 0.9) 0%, 
-        rgba(218, 165, 32, 0.95) 30%, 
-        rgba(184, 134, 11, 0.9) 70%, 
+    background: linear-gradient(135deg,
+        rgba(255, 215, 0, 0.9) 0%,
+        rgba(218, 165, 32, 0.95) 30%,
+        rgba(184, 134, 11, 0.9) 70%,
         rgba(139, 69, 19, 0.85) 100%
     );
     border-radius: 15px;
@@ -60,35 +61,30 @@
     text-align: center;
     cursor: pointer;
 
-    /* Animation: From Top */
     animation: slideFromTop 1.2s ease-out forwards;
     animation-delay: 1.7s;
     opacity: 0;
 }
-
 .card:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
 }
 
-/* Card Title (Scale Up) */
 .cardTitle {
     font-family: 'Georgia', 'Times New Roman', serif;
     color: #ffffff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    font-size: 1.75rem;
+    font-size: 1.4rem;
     font-weight: 700;
     letter-spacing: 1px;
     margin-bottom: 10px;
     position: relative;
     z-index: 2;
 
-    /* Animation: Scale Up */
     animation: fadeScaleUp 1.2s ease-out forwards;
     animation-delay: 2s;
     opacity: 0;
 }
-
 .cardTitle::after {
     content: '';
     position: absolute;
@@ -97,57 +93,37 @@
     transform: translateX(-50%);
     width: 60px;
     height: 2px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.6), 
-        transparent
-    );
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
     border-radius: 1px;
 }
 
-/* Card Text (Slide from Bottom) */
 .cardText {
     color: #f5f5f5;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    font-size: 1rem;
+    font-size: 0.85rem;
     line-height: 1.5;
     font-weight: 400;
     position: relative;
     z-index: 2;
-    max-width: 250px;
+    max-width: 220px;
 
-    /* Animation: From Bottom */
     animation: slideFromBottom 1.2s ease-out forwards;
     animation-delay: 2.2s;
     opacity: 0;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 1024px) {
+/* Larger screens */
+@media (min-width: 640px) {
     .card {
-        width: 280px;
-        height: 260px;
-        gap: 15px;
+        width: 300px;
+        height: 250px;
+        gap: 20px;
     }
     .cardTitle {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
     }
     .cardText {
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .card {
-        width: 260px;
-        height: 240px;
-        gap: 12px;
-    }
-    .cardTitle {
-        font-size: 1.4rem;
-    }
-    .cardText {
-        font-size: 0.85rem;
-        max-width: 220px;
+        font-size: 1rem;
+        max-width: 250px;
     }
 }

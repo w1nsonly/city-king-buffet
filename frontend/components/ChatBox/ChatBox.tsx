@@ -80,9 +80,9 @@ export default function ChatBox() {
     },[chatHistory]);
     
     return (
-        <div className="chatbox-container max-w-2xl mx-auto bg-white rounded-lg shadow-lg border border-red-200 overflow-hidden">
+        <div className="chatbox-container w-full max-w-2xl mx-auto bg-white rounded-lg shadow-lg border border-red-200 overflow-hidden">
             {/* ChatBox Messages */}
-            <div ref={chatRef} className="chat-messages h-96 overflow-y-auto p-4 space-y-4 bg-red-50">
+            <div ref={chatRef} className="chat-messages h-96 overflow-y-auto overflow-x-hidden p-4 space-y-4 bg-red-50 break-words">
                 <div className="AI Chat flex justify-start">
                     <div className="bg-white border border-red-200 rounded-2xl rounded-bl-md px-4 py-2 max-w-xs shadow-sm">
                         <p className="text-red-900 text-sm">Hello, how could I help you?</p>
@@ -95,14 +95,13 @@ export default function ChatBox() {
                     <ChatMessage chat={chat} />
                 </div>
                 ))}
-
             </div>
-            
+
             {/* ChatBox Input */}
             <div className="chat-input border-t border-red-200 p-4 bg-white">
-                <div className="grid grid-cols-1 md:grid-cols-[auto,1fr] md:items-center md:gap-4">
+                <div className="flex flex-col gap-3 md:grid md:grid-cols-[auto,1fr] md:items-center md:gap-4">
                     {/* Quick buttons: stack centered on mobile, left-docked on desktop */}
-                    <div className="order-1 md:order-none mb-3 md:mb-0 flex justify-center md:justify-start gap-2">
+                    <div className="mb-3 md:mb-0 flex justify-center md:justify-start gap-2 flex-wrap md:flex-nowrap md:self-center">
                         <button type="button" onClick={() => askQuestion("How much is it right now?")} className="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-red-600 text-white shadow-sm hover:bg-red-700 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500">
                             Price Today
                         </button>

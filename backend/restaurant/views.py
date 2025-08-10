@@ -147,10 +147,5 @@ class MenuItemList(generics.ListAPIView):
 
 # To keep backend alive
 def keepalive(request):
-    # Simple DB query to keep it warm too
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT 1;")
-        cursor.fetchone()
-
     return JsonResponse({"ok": True})
 

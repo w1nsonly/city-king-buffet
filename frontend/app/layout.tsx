@@ -10,7 +10,11 @@ export const metadata: Metadata = {
   icons: {
     icon: "/citykingfavicon.ico",
   },
+};
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({children,}:Readonly<{children: React.ReactNode;}>) {

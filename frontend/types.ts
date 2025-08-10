@@ -1,6 +1,13 @@
 // app/types.ts
 
-export interface MenuItem {
+export interface BuffetItem {
+    id: number;
+    name: string;
+    price: string;
+    category: string;
+}
+
+export interface KitchenItem {
     id: number;
     id_number: string;
     name: string;
@@ -8,9 +15,3 @@ export interface MenuItem {
     category: string;
 }
 
-export interface BuffetItem {
-    id: number;
-    name: string;
-    price: string;
-    category: string;
-}

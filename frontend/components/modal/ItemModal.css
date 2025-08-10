@@ -1,0 +1,111 @@
+/* Lock background when modal is open */
+body.active-modal { overflow: hidden; }
+
+/* Overlay + positioning */
+.modal, .overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.overlay {
+    background: rgba(0,0,0,0.5);
+    animation: overlayFade .2s ease-out;
+}
+
+/* Modal card */
+.modal-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(92vw, 800px);
+    background: #fff;
+    border-radius: 16px;
+    padding: clamp(16px, 3vw, 28px);
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25),
+        0 2px 10px rgba(0,0,0,.1);
+    border: 1px solid rgba(0,0,0,0.06);
+    animation: cardPop .22s ease-out;
+}
+
+/* Header row */
+.item-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    min-width: 0;
+    padding-right: 36px;
+}
+
+/* Title and price */
+.item-wrapper h2 {
+    margin: 0;
+    font-weight: bold;
+    line-height: 1.15;
+    font-size: 30px;
+    color: #1f2937;
+    letter-spacing: .2px;
+}
+.item-wrapper p {
+    margin: 0;
+    font-weight: 800;
+    font-size: clamp(1.1rem, 3vw, 1.75rem);
+    color: #dc2626; 
+    white-space: nowrap;
+}
+
+.close-button {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    height: 26px;
+    width: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    color: #111;
+    cursor: pointer;
+    transition: transform .1s ease, background .15s ease, box-shadow .15s ease;
+}
+
+.close-button img {
+    height: 16px;
+    width: 16px;
+}
+
+.close-button:hover {
+    background: #f3f4f6;
+}
+
+.close-button:active {
+    transform: scale(0.96);
+}
+
+
+/* Animations */
+@keyframes overlayFade {
+    from { 
+        opacity: 0; 
+    } to { 
+        opacity: 1; 
+    }
+}
+@keyframes cardPop {
+    from { 
+        opacity: 0; 
+        transform: translate(-50%, -54%) scale(.98); 
+    } to { 
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1); 
+    }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .overlay, .modal-content { animation: none; }
+}
