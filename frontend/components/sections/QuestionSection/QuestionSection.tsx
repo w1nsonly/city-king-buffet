@@ -1,7 +1,7 @@
-// components/sections/QuestionSection.tsx
+// components/sections/QuestionSection/QuestionSection.tsx
 
 'use client'
-import ChatBox from "@/components/ChatBox/ChatBox"
+import ChatBox from "@/components/sections/QuestionSection/ChatBox/ChatBox"
 
 export default function QuestionSection() {
 

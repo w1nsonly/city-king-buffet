@@ -1,9 +1,16 @@
+// app/kitchen/page.tsx
+
 'use client'
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import MenuCategory from "@/components/menu/MenuCategory";
+import KitchenCategory from "@/components/menu/KitchenCategory";
 import { KitchenItem } from "@/types";
 import ItemModal from "@/components/modal/ItemModal";
+import { Playfair_Display } from "next/font/google";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+});
 
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
@@ -46,7 +53,7 @@ export default function KitchenMenu() {
             {/* card container */}
             <div className="mt-4 w-full max-w-[1000px] mx-auto px-4 sm:px-6">
                 <div className="p-5 bg-[#fffdf5] shadow-[0_4px_8px_rgba(0,0,0,0.1)] rounded-[10px]">
-                    <h2 className="text-center text-3xl font-bold mb-6">Kitchen Menu</h2>
+                    <h2 className={`${playfair.className} text-center text-4xl font-bold mb-6 text-black [-webkit-text-fill-color:#000]`}>Kitchen Menu</h2>
 
                     {/* mobile-first grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -67,7 +74,7 @@ export default function KitchenMenu() {
                             "Pork",
                             "Chicken",
                             ].map((category) => (
-                            <MenuCategory
+                            <KitchenCategory
                                 key={category}
                                 category={category}
                                 items={kitchenItems.filter((i) => i.category === category)}
@@ -86,7 +93,7 @@ export default function KitchenMenu() {
                             "Sushi Rolls",
                             "Side Orders",
                             ].map((category) => (
-                            <MenuCategory
+                            <KitchenCategory
                                 key={category}
                                 category={category}
                                 items={kitchenItems.filter((i) => i.category === category)}

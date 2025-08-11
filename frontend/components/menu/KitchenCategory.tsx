@@ -1,30 +1,37 @@
-// components/menu/MenuCategory.tsx
+// components/menu/KitchenCategory.tsx
 
 import { KitchenItem } from "@/types";
+import { Playfair_Display } from "next/font/google";
 
-interface MenuProps {
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+});
+
+interface KitchenProps {
     category: string;
     items: KitchenItem[];
     onClick: (item: KitchenItem) => void;
 }
 
-export default function MenuCategory({ category, items, onClick }: MenuProps) {
+export default function KitchenCategory({ category, items, onClick }: KitchenProps) {
 
   return (
     <div className="mb-6 w-full">
-        <h3 className="text-xl font-semibold mb-2">{category}</h3>
+       <h3 className={`${playfair.className} font-bold text-2xl mb-2 text-black [-webkit-text-fill-color:#000]`}>{category}</h3>
         <ul className="list-none p-0 m-0 w-full">
             {items.map((item) => (
                 <li
                 key={item.id_number ?? item.name}
                 onClick={() => onClick(item)}
-                className="
+                className={`
+                    ${playfair.className}
                     p-2.5 border-b border-gray-200
                     flex items-center justify-between gap-3
-                    text-base md:text-lg text-gray-700
+                    text-base md:text-lg text-black-700
                     hover:bg-red-100 last:border-0
                     min-w-0
-                "
+                    `
+                }
                 >
                 {/* name wraps, can shrink */}
                 <span className="flex-1 min-w-0 break-words">

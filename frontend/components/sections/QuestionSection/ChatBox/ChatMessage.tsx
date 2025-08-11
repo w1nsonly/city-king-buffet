@@ -1,4 +1,4 @@
-// components/ChatBox/ChatMessage.tsx
+// components/sections/QuestionSection/ChatBox/ChatMessage.tsx
 
 "use client"
 import React from "react"

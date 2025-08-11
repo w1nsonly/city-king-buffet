@@ -1,4 +1,4 @@
-// components/sections/HomeSection.tsx
+// components/sections/HomeSection/HomeSection.tsx
 
 import styles from "./HomeSection.module.css";
 

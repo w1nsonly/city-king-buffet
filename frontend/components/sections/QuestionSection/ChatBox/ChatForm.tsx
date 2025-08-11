@@ -1,4 +1,4 @@
-// components/ChatBox/ChatForm.tsx
+// components/sections/QuestionSection/ChatBox/ChatForm.tsx
 
 "use client"
 import { Dispatch, SetStateAction, useRef, FormEvent } from 'react'

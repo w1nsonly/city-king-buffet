@@ -1,4 +1,4 @@
-// components/ChatBox/ChatBox.tsx
+// components/sections/QuestionSection/ChatBox/ChatBox.tsx
 
 "use client"
 import { useState, useEffect, useRef } from "react"

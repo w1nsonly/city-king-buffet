@@ -1,11 +1,16 @@
-// components/sections/BuffetSection.tsx
+// components/sections/BuffetSection/BuffetSection.tsx
 
 'use client'
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BuffetCategory from "@/components/menu/BuffetCategory";
 import { BuffetItem } from "@/types";
-import ItemModal from "../modal/ItemModal";
+import ItemModal from "@/components/modal/ItemModal";
+import { Playfair_Display } from "next/font/google";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+});
 
 export default function BuffetSection() {
     const API_BASE = process.env.NEXT_PUBLIC_API_BASE!;
@@ -35,7 +40,7 @@ export default function BuffetSection() {
     <section id="buffet" className="w-full overflow-x-hidden bg-[url('/lightbeige.jpg')] py-10">
         <div className="w-full max-w-[1000px] mx-auto px-4 sm:px-6">
             <div className="p-5 bg-[#fffdf5] shadow-[0_4px_8px_rgba(0,0,0,0.1)] rounded-[10px]">
-                <h2 className="text-center text-3xl font-bold mb-6">Buffet Menu</h2>
+                <h2 className={`${playfair.className} text-center text-4xl font-bold mb-6 text-black [-webkit-text-fill-color:#000]`}>Buffet Menu</h2>
 
                 {/* mobile-first grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full">
