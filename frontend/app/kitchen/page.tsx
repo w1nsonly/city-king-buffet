@@ -53,7 +53,7 @@ export default function KitchenMenu() {
             {/* card container */}
             <div className="mt-4 w-full max-w-[1000px] mx-auto px-4 sm:px-6">
                 <div className="p-5 bg-[#fffdf5] shadow-[0_4px_8px_rgba(0,0,0,0.1)] rounded-[10px]">
-                    <h2 className={`${playfair.className} text-center text-4xl font-bold mb-6 text-black [-webkit-text-fill-color:#000]`}>Kitchen Menu</h2>
+                    <h2 style={{ WebkitTextFillColor: "#000" }} className={`${playfair.className} text-center text-4xl font-bold mb-6 text-black`}>Kitchen Menu</h2>
 
                     {/* mobile-first grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

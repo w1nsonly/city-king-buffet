@@ -17,12 +17,13 @@ export default function KitchenCategory({ category, items, onClick }: KitchenPro
 
   return (
     <div className="mb-6 w-full">
-       <h3 className={`${playfair.className} font-bold text-2xl mb-2 text-black [-webkit-text-fill-color:#000]`}>{category}</h3>
+       <h3 style={{ WebkitTextFillColor: "#000" }} className={`${playfair.className} font-bold text-2xl mb-2 text-black`}>{category}</h3>
         <ul className="list-none p-0 m-0 w-full">
             {items.map((item) => (
                 <li
                 key={item.id_number ?? item.name}
                 onClick={() => onClick(item)}
+                style={{ WebkitTextFillColor: "#000" }}
                 className={`
                     ${playfair.className}
                     p-2.5 border-b border-gray-200
