@@ -15,7 +15,7 @@ HOURS = {
     3: (time(11, 0),  time(21, 0)),   # Thu
     4: (time(11, 0),  time(21,30)),   # Fri
     5: (time(11, 0),  time(21,30)),   # Sat
-    6: (time(11,30),  time(21,30)),   # Sun
+    6: (time(11,30),  time(21, 0)),   # Sun
 }
 
 # Prices

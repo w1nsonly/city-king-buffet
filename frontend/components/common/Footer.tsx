@@ -14,9 +14,9 @@ export default function Footer() {
 
                 <div className="footer-hours flex-none">
                     <h3 className="text-base font-bold uppercase tracking-[0.15em] mb-3">Opening Hours</h3>
-                        <p className="text-sm text-white leading-[1.6] my-1.5">Mon - Thu: 11 AM - 9 PM</p>
-                        <p className="text-sm text-white leading-[1.6] my-1.5">Fri - Sat: 11 AM - 9:30 PM</p>
-                        <p className="text-sm text-white leading-[1.6] my-1.5">Sun: 11:30 AM - 9:30 PM</p>
+                        <p className="text-sm text-white leading-[1.6] my-1.5">Mon - Thu: 11: AM - 9 PM</p>
+                        <p className="text-sm text-white leading-[1.6] my-1.5">Fri - Sat: 11: AM - 9:30 PM</p>
+                        <p className="text-sm text-white leading-[1.6] my-1.5">Sun: 11:30 AM - 9 PM</p>
                 </div>
 
                 <div className="footer-contact flex-none">
