@@ -9,7 +9,7 @@ import ItemModal from "@/components/modal/ItemModal";
 import { Playfair_Display } from "next/font/google";
 
 const playfair = Playfair_Display({
-  subsets: ["latin"],
+    subsets: ["latin"],
 });
 
 export default function BuffetSection() {
@@ -44,29 +44,19 @@ export default function BuffetSection() {
 
                 {/* mobile-first grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full">
-                {/* Left column */}
-                    <div className="flex flex-col gap-5 min-w-0">
-                        {["Lunch Buffet", "To Go (Priced Per Pound)"].map((category) => (
-                            <BuffetCategory 
-                            key={category} 
-                            category={category} 
-                            items={menuItems.filter((i) => i.category === category)}
-                            onClick={toggleModal}
-                            />
-                        ))}
-                    </div>
-
-                    {/* Right column */}
-                    <div className="flex flex-col gap-5 min-w-0">
-                        {["Dinner Buffet", "Weekend Buffet"].map((category) => (
-                            <BuffetCategory 
-                            key={category} 
-                            category={category} 
-                            items={menuItems.filter((i) => i.category === category)}
-                            onClick={toggleModal}
-                            />
-                        ))}
-                    </div>
+                {[
+                    "Lunch Buffet",
+                    "Weekend Buffet",
+                    "Dinner Buffet",
+                    "To Go (Priced Per Pound)",
+                ].map((category) => (
+                    <BuffetCategory
+                    key={category}
+                    category={category}
+                    items={menuItems.filter((i) => i.category === category)}
+                    onClick={toggleModal}
+                    />
+                ))}
                 </div>
 
                 {selectedItem && (
