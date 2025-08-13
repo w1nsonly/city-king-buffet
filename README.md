@@ -2,7 +2,7 @@
 
 Official website for **[City King Buffet](https://citykingbuffetky.com)** — a full-stack application that allows customers to view buffet and kitchen menus, check prices, and interact with an AI-powered chatbox for restaurant-related questions.
 
-![City King Buffet Homepage](./imgs/citykinghomepage.png)
+![City King Buffet Homepage](./imgs/city-king-homepage.png)
 
 ---
 
@@ -101,10 +101,16 @@ npm run dev
 python backend/scripts/ingest.py
 ```
 
-### Add Menu Items
+### Add Buffet Menu Items & Categories
 ```bash
-python backend/restaurant/add_menu_items.py
-python backend/restaurant/add_buffet_items.py
+python backend/scripts/add_buffet_category.py
+python backend/scripts/add_buffet_items.py
+```
+
+### Add Kitchen Menu Items & Categories
+```bash
+python backend/scripts/add_kitchen_category.py
+python backend/scripts/add_kitchen_items.py
 ```
 
 ### Update Pricing & Hours
