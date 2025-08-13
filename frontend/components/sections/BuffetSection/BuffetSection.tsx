@@ -47,8 +47,15 @@ export default function BuffetSection() {
     const subtitleFor = (name: string) =>
         categoriesMeta.find(c => c.name === name)?.subtitle || "";
 
-    const DISPLAY_ORDER = ["Lunch Buffet", "Weekend Buffet", "Dinner Buffet", "To Go"];
+    const buffetCategories = ["Lunch Buffet", "Dinner Buffet", "Weekend Buffet", "To Go"];
 
+    // Merge both into one map of order classes
+    const orderMap: Record<string, string> = {
+        "Lunch Buffet":   "order-1 sm:order-1",
+        "Dinner Buffet":  "order-2 sm:order-3",
+        "Weekend Buffet": "order-3 sm:order-2",
+        "To Go":          "order-4 sm:order-4",
+    };
     return (
     
     <section id="buffet" className="w-full overflow-x-hidden bg-[url('/light-beige.jpg')] py-10">
@@ -58,14 +65,15 @@ export default function BuffetSection() {
 
                 {/* mobile-first grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full">
-                {DISPLAY_ORDER.map((category) => (
+                {buffetCategories.map((category) => (
+                    <div key={category} className={orderMap[category]}>
                     <BuffetCategory
-                    key={category}
-                    category={category}
-                    subtitle={subtitleFor(category)}
-                    items={buffetItems.filter((i) => i.category === category)}
-                    onClick={toggleModal}
+                        category={category}
+                        subtitle={subtitleFor(category)}
+                        items={buffetItems.filter((i) => i.category === category)}
+                        onClick={toggleModal}
                     />
+                    </div>
                 ))}
                 </div>
 
