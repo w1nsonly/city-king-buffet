@@ -1,6 +1,6 @@
 // components/menu/BuffetCategory.tsx
 
-import { BuffetItem } from "@/types";
+import { BuffetItemTypes } from "@/types";
 import { Playfair_Display } from "next/font/google";
 
 const playfair = Playfair_Display({
@@ -9,15 +9,25 @@ const playfair = Playfair_Display({
 
 interface BuffetProps {
     category: string;
-    items: BuffetItem[];
-    onClick: (item: BuffetItem) => void;
+    subtitle?: string;
+    items: BuffetItemTypes[];
+    onClick: (item: BuffetItemTypes) => void;
 }
 
-export default function BuffetCategory({ category, items, onClick }: BuffetProps) {
+export default function BuffetCategory({ category, subtitle, items, onClick }: BuffetProps) {
 
     return (
     <div className="mb-6 w-full">
-        <h3 style={{ WebkitTextFillColor: "#000" }} className={`${playfair.className} font-bold text-2xl mb-2 text-black`}>{category}</h3>
+       <h3 style={{ WebkitTextFillColor: "#000" }} className="text-2xl text-black font-bold mb-2">
+            <span className={`${playfair.className} border-b-2 border-[#830e0e]`}>
+                {category}
+            </span>
+        </h3>
+
+        {subtitle ? (
+            <p style={{ WebkitTextFillColor: "#000" }} className="text-sm text-black-600 italic mb-1">{subtitle}</p>
+        ) : null}
+        
         <ul className="w-full">
             {items.map((item) => (
                 <li

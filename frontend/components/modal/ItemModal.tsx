@@ -1,13 +1,13 @@
 // components/modal/ItemModal.tsx
 
 import { useEffect } from "react";
-import { BuffetItem, KitchenItem } from "@/types";
+import { BuffetItemTypes, KitchenItemTypes } from "@/types";
 import "./ItemModal.css";
 
 interface ItemModalProps {
     modal: boolean;
     toggleModal: () => void;
-    item: BuffetItem | KitchenItem;
+    item: BuffetItemTypes | KitchenItemTypes;
     price: number;
 }
 
@@ -35,7 +35,7 @@ export default function ItemModal({ modal, toggleModal, item }: ItemModalProps) 
                             <p>${Number(item.price).toFixed(2)}</p>
                         </div>
                         <button className="close-button" onClick={toggleModal}>
-                            <img src="/close-icon.png" alt="X Close Button Icon" />
+                            <img src="/x-icon.png" alt="X Close Button Icon" />
                         </button>
                     </div>
                 </div>

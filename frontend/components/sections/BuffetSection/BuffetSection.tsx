@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BuffetCategory from "@/components/menu/BuffetCategory";
-import { BuffetItem } from "@/types";
+import { BuffetCategoryTypes, BuffetItemTypes } from "@/types";
 import ItemModal from "@/components/modal/ItemModal";
 import { Playfair_Display } from "next/font/google";
 
@@ -14,12 +14,13 @@ const playfair = Playfair_Display({
 
 export default function BuffetSection() {
     const API_BASE = process.env.NEXT_PUBLIC_API_BASE!;
-    const [menuItems, setMenuItems] = useState<BuffetItem[]>([]);
+    const [buffetItems, setBuffetItems] = useState<BuffetItemTypes[]>([]);
+    const [categoriesMeta, setCategoriesMeta] = useState<BuffetCategoryTypes[]>([]);
     const [modal, setModal] = useState(false);
-    const [selectedItem, setSelectedItem] = useState<BuffetItem| null>(null);
+    const [selectedItem, setSelectedItem] = useState<BuffetItemTypes| null>(null);
 
     
-    function toggleModal(item?: BuffetItem) {
+    function toggleModal(item?: BuffetItemTypes) {
         if (modal) {
             setSelectedItem(null);
         } else if (item) {
@@ -29,31 +30,40 @@ export default function BuffetSection() {
     }
 
     useEffect(() => {
-        axios
-        .get<BuffetItem[]>(`${API_BASE}restaurant/menu/buffet`)
-        .then((res) => setMenuItems(res.data))
-        .catch((err) => console.error("Error fetching menu:", err));
-    }, []);
+        (async () => {
+            try {
+                const [itemsRes, catsRes] = await Promise.all([
+                    axios.get<BuffetItemTypes[]>(`${API_BASE}restaurant/menu/buffet`),
+                    axios.get<BuffetCategoryTypes[]>(`${API_BASE}restaurant/category/buffet`),
+                ]);
+                setBuffetItems(itemsRes.data);
+                setCategoriesMeta(catsRes.data);
+            } catch (err) {
+                console.error("Error fetching kitchen data:", err);
+            }
+        })();
+    }, [API_BASE]);
 
-  return (
+    const subtitleFor = (name: string) =>
+        categoriesMeta.find(c => c.name === name)?.subtitle || "";
+
+    const DISPLAY_ORDER = ["Lunch Buffet", "Weekend Buffet", "Dinner Buffet", "To Go"];
+
+    return (
     
-    <section id="buffet" className="w-full overflow-x-hidden bg-[url('/lightbeige.jpg')] py-10">
+    <section id="buffet" className="w-full overflow-x-hidden bg-[url('/light-beige.jpg')] py-10">
         <div className="w-full max-w-[1000px] mx-auto px-4 sm:px-6">
             <div className="p-5 bg-[#fffdf5] shadow-[0_4px_8px_rgba(0,0,0,0.1)] rounded-[10px]">
                 <h2 style={{ WebkitTextFillColor: "#000" }} className={`${playfair.className} text-center text-4xl font-bold mb-6 text-black`}>Buffet Menu</h2>
 
                 {/* mobile-first grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full">
-                {[
-                    "Lunch Buffet",
-                    "Weekend Buffet",
-                    "Dinner Buffet",
-                    "To Go (Priced Per Pound)",
-                ].map((category) => (
+                {DISPLAY_ORDER.map((category) => (
                     <BuffetCategory
                     key={category}
                     category={category}
-                    items={menuItems.filter((i) => i.category === category)}
+                    subtitle={subtitleFor(category)}
+                    items={buffetItems.filter((i) => i.category === category)}
                     onClick={toggleModal}
                     />
                 ))}

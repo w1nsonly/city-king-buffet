@@ -41,7 +41,9 @@
     "price": "15.99",
     "category": "Weekend Buffet"
   },
-  { "id": 8, "name": "To Go", "price": "7.49", "category": "To Go" },
-  { "id": 9, "name": "Buffet To Go", "price": "10.99", "category": "To Go" },
-  { "id": 10, "name": "Drink", "price": "2.50", "category": "To Go" }
+  { "id": 8, "name": "To Go", "price": "7.49", "category": "To Go (Priced Per Pound)" },
+  { "id": 9, "name": "Buffet To Go", "price": "10.99", "category": "To Go (Priced Per Pound)" },
+  { "id": 10, "name": "Drink", "price": "2.99", "category": "Lunch Buffet" },
+  { "id": 11, "name": "Drink", "price": "2.99", "category": "Dinner Buffet" },
+  { "id": 11, "name": "Drink", "price": "2.99", "category": "Weekend Buffet" }
 ]

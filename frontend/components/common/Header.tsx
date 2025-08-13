@@ -4,6 +4,7 @@
 import { Playfair_Display } from "next/font/google";
 import { Squash as Hamburger } from 'hamburger-react'
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 
@@ -23,7 +24,19 @@ export default function Header() {
     return (
         <header className="sticky top-0 z-50 bg-[#830e0e] text-[bisque]">
             <div className="mx-auto w-full max-w-[1000px] px-4 sm:px-6 py-3 flex items-center justify-between">
-                <h1 className={`${playfair.className} font-700 text-xl sm:text-4xl`}>City King Buffet</h1>
+                <Link href="/#home" className="flex items-center gap-2 sm:gap-3">
+                    <div className="relative h-10 w-10 sm:h-10 sm:w-10 overflow-visible translate-x-1 sm:translate-x-0">
+                        <Image 
+                            src="city-king-crown.svg" 
+                            alt="City King" fill 
+                            className="object-contain transform scale-200 sm:scale-150 origin-center" 
+                            priority 
+                        />
+                    </div>
+                    <h1 className={`${playfair.className} hidden sm:block font-700 text-xl sm:text-4xl`}>
+                        City King Buffet
+                    </h1>
+                </Link>
 
                 {/* Desktop nav */}
                 <nav className="hidden sm:block text-xl">

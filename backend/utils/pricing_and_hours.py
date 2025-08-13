@@ -270,3 +270,5 @@ def get_hours_today_answer() -> str:
     nxt = next_open_datetime(now)
     when_txt = _when_open(now, nxt)
     return f"My friend! We're closed for today. We reopen {when_txt}."
+
+

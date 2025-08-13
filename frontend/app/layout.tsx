@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "City King Buffet",
   description: "City King Buffet - Explore our buffet menu, kitchen, and get instant answers to your questions with our AI-powered chatbox.",
   icons: {
-    icon: "/citykingfavicon.ico",
+    icon: "/favicon.ico",
   },
 };
 

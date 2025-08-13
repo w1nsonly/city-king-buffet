@@ -1,7 +1,8 @@
 // components/menu/KitchenCategory.tsx
 
-import { KitchenItem } from "@/types";
+import { KitchenItemTypes } from "@/types";
 import { Playfair_Display } from "next/font/google";
+import Image from "next/image";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -9,15 +10,26 @@ const playfair = Playfair_Display({
 
 interface KitchenProps {
     category: string;
-    items: KitchenItem[];
-    onClick: (item: KitchenItem) => void;
+    subtitle?: string; // optional
+    items: KitchenItemTypes[];
+    onClick: (item: KitchenItemTypes) => void;
 }
 
-export default function KitchenCategory({ category, items, onClick }: KitchenProps) {
+export default function KitchenCategory({ category, subtitle, items, onClick }: KitchenProps) {
+
 
   return (
     <div className="mb-6 w-full">
-       <h3 style={{ WebkitTextFillColor: "#000" }} className={`${playfair.className} font-bold text-2xl mb-2 text-black`}>{category}</h3>
+        <h3 style={{ WebkitTextFillColor: "#000" }} className="text-2xl text-black font-bold mb-2">
+            <span className={`${playfair.className} border-b-2 border-[#830e0e]`}>
+                {category}
+            </span>
+        </h3>
+        
+        {subtitle ? (
+            <p style={{ WebkitTextFillColor: "#000" }} className="text-sm text-black-600 italic mb-1">{subtitle}</p>
+        ) : null}
+
         <ul className="list-none p-0 m-0 w-full">
             {items.map((item) => (
                 <li
@@ -38,6 +50,16 @@ export default function KitchenCategory({ category, items, onClick }: KitchenPro
                 <span className="flex-1 min-w-0 break-words">
                     {item.id_number ? `${item.id_number}. ` : ""}
                     {item.name}
+                    {item.is_spicy && (
+                        <Image
+                            width={24}
+                            height={24}
+                            src="/spicy-flame.svg"
+                            alt="Spicy"
+                            className="absolute ml-2 inline-block align-[-2px]"
+                            loading="lazy"
+                        />
+                    )}
                 </span>
                 {/* price stays compact */}
                 <span className="shrink-0 whitespace-nowrap pl-3 font-bold text-red-600 tabular-nums">
@@ -46,6 +68,7 @@ export default function KitchenCategory({ category, items, onClick }: KitchenPro
                 </li>
             ))}
         </ul>
+        
     </div>
     );
 }

@@ -4,25 +4,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import KitchenCategory from "@/components/menu/KitchenCategory";
-import { KitchenItem } from "@/types";
+import { KitchenCategoryTypes, KitchenItemTypes } from "@/types";
 import ItemModal from "@/components/modal/ItemModal";
-import { Playfair_Display } from "next/font/google";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-});
-
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import Link from "next/link";
 
-export default function KitchenMenu() {
-    const API_BASE = process.env.NEXT_PUBLIC_API_BASE!;
-    const [kitchenItems, setKitchenItems] = useState<KitchenItem[]>([]);
-    const [modal, setModal] = useState(false);
-    const [selectedItem, setSelectedItem] = useState<KitchenItem| null>(null);
+import { Playfair_Display } from "next/font/google";
+const playfair = Playfair_Display({
+    subsets: ["latin"],
+});
 
-    function toggleModal(item?: KitchenItem) {
+export default function KitchenMenu() {
+    
+    const API_BASE = process.env.NEXT_PUBLIC_API_BASE!;
+    const [modal, setModal] = useState(false);
+    const [kitchenItems, setKitchenItems] = useState<KitchenItemTypes[]>([]);
+    const [selectedItem, setSelectedItem] = useState<KitchenItemTypes | null>(null);
+    const [categoriesMeta, setCategoriesMeta] = useState<KitchenCategoryTypes[]>([]);
+
+
+    function toggleModal(item?: KitchenItemTypes) {
         if (modal) {
             setSelectedItem(null);
         } else if (item) {
@@ -32,17 +34,34 @@ export default function KitchenMenu() {
     }
 
     useEffect(() => {
-    axios
-        .get<KitchenItem[]>(`${API_BASE}restaurant/menu/regular`)
-        .then((res) => setKitchenItems(res.data))
-        .catch((err) => console.error("Error fetching menu:", err));
-    }, []);
+        (async () => {
+            try {
+                const [itemsRes, catsRes] = await Promise.all([
+                    axios.get<KitchenItemTypes[]>(`${API_BASE}restaurant/menu/kitchen`),
+                    axios.get<KitchenCategoryTypes[]>(`${API_BASE}restaurant/category/kitchen`),
+                ]);
+                setKitchenItems(itemsRes.data);
+                setCategoriesMeta(catsRes.data);
+            } catch (err) {
+                console.error("Error fetching kitchen data:", err);
+            }
+        })();
+    }, [API_BASE]);
 
-  return (
+    const subtitleFor = (name: string) =>
+        categoriesMeta.find(c => c.name === name)?.subtitle || "";
+
+    const left = [
+        "Appetizers","Soups","Chow Mein","Chop Suey","Lo Mein","Mei Fun",
+        "Fried Rice","Egg Foo Young","Vegetable","Shrimp","Beef","Pork","Chicken",
+    ];
+    const right = ["Lunch Combos","Special Combos","Chef Specials","Diet Menu","Sushi Rolls","Side Orders"];
+
+    return (
     <>
         <Header />
         {/* page wrapper */}
-        <div className="w-full overflow-x-hidden bg-[url('/lightbeige.jpg')] py-10">
+        <div className="w-full overflow-x-hidden bg-[url('/light-beige.jpg')] py-10">
             {/* top bar w/ back link */}
             <div className="w-full max-w-[1000px] mx-auto px-4 sm:px-6">
             <Link href="/#home" className="inline-flex items-center gap-2 px-4 py-2 bg-[#830e0e] text-[bisque] rounded-full shadow-md transition-all duration-200 hover:text-white hover:bg-[#a83232]">
@@ -59,24 +78,11 @@ export default function KitchenMenu() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         {/* Left column */}
                         <div className="flex flex-col gap-5">
-                            {[
-                            "Appetizers",
-                            "Soups",
-                            "Chow Mein",
-                            "Chop Suey",
-                            "Lo Mein",
-                            "Mei Fun",
-                            "Fried Rice",
-                            "Egg Foo Young",
-                            "Vegetable",
-                            "Shrimp",
-                            "Beef",
-                            "Pork",
-                            "Chicken",
-                            ].map((category) => (
+                            {left.map((category) => (
                             <KitchenCategory
                                 key={category}
                                 category={category}
+                                subtitle={subtitleFor(category)}
                                 items={kitchenItems.filter((i) => i.category === category)}
                                 onClick={toggleModal}
                             />
@@ -85,17 +91,11 @@ export default function KitchenMenu() {
 
                         {/* Right column */}
                         <div className="flex flex-col gap-5">
-                            {[
-                            "Lunch Combos",
-                            "Special Combos",
-                            "Chef Specials",
-                            "Diet Menu",
-                            "Sushi Rolls",
-                            "Side Orders",
-                            ].map((category) => (
+                            {right.map((category) => (
                             <KitchenCategory
                                 key={category}
                                 category={category}
+                                subtitle={subtitleFor(category)}
                                 items={kitchenItems.filter((i) => i.category === category)}
                                 onClick={toggleModal}
                             />
