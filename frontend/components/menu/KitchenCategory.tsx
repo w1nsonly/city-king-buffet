@@ -20,14 +20,14 @@ export default function KitchenCategory({ category, subtitle, items, onClick }: 
 
   return (
     <div className="mb-6 w-full">
-        <h3 style={{ WebkitTextFillColor: "#000" }} className="text-2xl text-black font-bold mb-2">
+        <h3 style={{ WebkitTextFillColor: "#000" }} className="text-2xl font-bold mb-2">
             <span className={`${playfair.className} border-b-2 border-[#830e0e]`}>
                 {category}
             </span>
         </h3>
         
         {subtitle ? (
-            <p style={{ WebkitTextFillColor: "#000" }} className="text-sm text-black-600 italic mb-1">{subtitle}</p>
+            <p style={{ WebkitTextFillColor: "#000" }} className="text-sm italic mb-1">{subtitle}</p>
         ) : null}
 
         <ul className="list-none p-0 m-0 w-full">
@@ -40,9 +40,8 @@ export default function KitchenCategory({ category, subtitle, items, onClick }: 
                     ${playfair.className}
                     p-2.5 border-b border-gray-200
                     flex items-center justify-between gap-3
-                    text-base md:text-lg text-black-700
-                    hover:bg-red-100 last:border-0
-                    min-w-0
+                    text-base md:text-lg hover:bg-red-100 
+                    last:border-0 min-w-0
                     `
                 }
                 >
@@ -56,13 +55,13 @@ export default function KitchenCategory({ category, subtitle, items, onClick }: 
                             height={24}
                             src="/spicy-flame.svg"
                             alt="Spicy"
-                            className="absolute ml-2 inline-block align-[-2px]"
+                            className="absolute ml-2 inline-block align-[-0.125rem]"
                             loading="lazy"
                         />
                     )}
                 </span>
                 {/* price stays compact */}
-                <span className="shrink-0 whitespace-nowrap pl-3 font-bold text-red-600 tabular-nums">
+                <span className="shrink-0 whitespace-nowrap pl-3 font-bold tabular-nums">
                     ${Number(item.price).toFixed(2)}
                 </span>
                 </li>

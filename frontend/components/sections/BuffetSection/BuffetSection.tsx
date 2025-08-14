@@ -59,9 +59,9 @@ export default function BuffetSection() {
     return (
     
     <section id="buffet" className="w-full overflow-x-hidden bg-[url('/light-beige.jpg')] py-10">
-        <div className="w-full max-w-[1000px] mx-auto px-4 sm:px-6">
-            <div className="p-5 bg-[#fffdf5] shadow-[0_4px_8px_rgba(0,0,0,0.1)] rounded-[10px]">
-                <h2 style={{ WebkitTextFillColor: "#000" }} className={`${playfair.className} text-center text-4xl font-bold mb-6 text-black`}>Buffet Menu</h2>
+        <div className="w-full max-w-[62.5rem] mx-auto px-4 sm:px-6">
+            <div className="p-[1.25rem] bg-[#fffdf5] shadow-[0_0.25rem_0.5rem_rgba(0,0,0,0.1)] rounded-[0.625rem]">
+                <h2 style={{ WebkitTextFillColor: "#000" }} className={`${playfair.className} text-center text-4xl font-bold mb-6`}>Buffet Menu</h2>
 
                 {/* mobile-first grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full">

@@ -23,7 +23,7 @@ export default function Header() {
 
     return (
         <header className="sticky top-0 z-50 bg-[#830e0e] text-[bisque]">
-            <div className="mx-auto w-full max-w-[1000px] px-4 sm:px-6 py-3 flex items-center justify-between">
+            <div className="mx-auto w-full max-w-[62.5rem] px-4 sm:px-6 py-3 flex items-center justify-between">
                 <Link href="/#home" className="flex items-center gap-2 sm:gap-3">
                     <div className="relative h-10 w-10 sm:h-10 sm:w-10 overflow-visible translate-x-1 sm:translate-x-0">
                         <Image 
@@ -33,7 +33,7 @@ export default function Header() {
                             priority 
                         />
                     </div>
-                    <h1 className={`${playfair.className} hidden sm:block font-700 text-xl sm:text-4xl`}>
+                    <h1 className={`${playfair.className} hidden sm:block font-medium text-xl sm:text-4xl`}>
                         City King Buffet
                     </h1>
                 </Link>
@@ -65,7 +65,7 @@ export default function Header() {
                             />
 
                             {/* dropdown panel */}
-                            <nav className="absolute right-2 mt-3 z-50 w-35 rounded-md bg-[#fffdf5] text-[black] text-center shadow-[0_4px_8px_rgba(0,0,0,0.1)]">
+                           <nav className="absolute right-2 mt-3 z-50 w-[8.75rem] rounded-md bg-[#fffdf5] text-[black] text-center shadow-[0_0.25rem_0.5rem_rgba(0,0,0,0.1)]">
                                 <ul className="py-2">
                                 {links.map(link => (
                                     <li key={link.name}>
