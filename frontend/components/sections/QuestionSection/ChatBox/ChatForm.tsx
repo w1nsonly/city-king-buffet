@@ -40,6 +40,7 @@ export default function ChatForm({ setChatHistory, generateAIResponse } : ChatFo
     return (
         <form action="#" className="flex items-center gap-3 w-full" onSubmit={handleFormSubmit}>
             <input 
+            style={{ WebkitTextFillColor: "#000" }}
             ref={inputRef}
             type="text" 
             placeholder="Your message here..." 
