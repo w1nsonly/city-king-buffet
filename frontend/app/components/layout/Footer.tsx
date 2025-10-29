@@ -1,4 +1,4 @@
-// components/common/Footer.tsx
+// app/components/layout/Footer.tsx
 
 export default function Footer() {
     
@@ -29,3 +29,4 @@ export default function Footer() {
         </footer>
     );
 }
+

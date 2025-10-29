@@ -1,4 +1,4 @@
-// components/sections/QuestionSection/ChatBox/ChatBox.tsx
+// app/(home)/components/QuestionSection/ChatBox.tsx
 
 "use client"
 import { useState, useEffect, useRef } from "react"
@@ -66,7 +66,7 @@ export default function ChatBox() {
             return next;
         });
 
-        // side-effects OUTSIDE the updater (won’t double in StrictMode)
+        // side-effects OUTSIDE the updater (won't double in StrictMode)
         setTimeout(() => {
             setChatHistory(h => [...h, { role: "model", text: "Thinking..." }]);
             generateAIResponse(next);
@@ -116,3 +116,4 @@ export default function ChatBox() {
         </div>
     )
 }
+

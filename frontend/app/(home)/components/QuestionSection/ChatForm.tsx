@@ -1,4 +1,4 @@
-// components/sections/QuestionSection/ChatBox/ChatForm.tsx
+// app/(home)/components/QuestionSection/ChatForm.tsx
 
 "use client"
 import { Dispatch, SetStateAction, useRef, FormEvent } from 'react'
@@ -30,7 +30,7 @@ export default function ChatForm({ setChatHistory, generateAIResponse } : ChatFo
             return next;
         });
 
-        // 2) Side-effects AFTER state update (won’t double in StrictMode)
+        // 2) Side-effects AFTER state update (won't double in StrictMode)
         setTimeout(() => {
             setChatHistory(h => [...h, { role: "model", text: "Thinking..." }]);
             generateAIResponse(next);
@@ -54,3 +54,4 @@ export default function ChatForm({ setChatHistory, generateAIResponse } : ChatFo
             
     )
 }
+

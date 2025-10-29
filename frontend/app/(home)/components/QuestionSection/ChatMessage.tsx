@@ -1,4 +1,4 @@
-// components/sections/QuestionSection/ChatBox/ChatMessage.tsx
+// app/(home)/components/QuestionSection/ChatMessage.tsx
 
 "use client"
 import React from "react"
@@ -21,3 +21,4 @@ export default function ChatMessage({ chat } : ChatMessageProps) {
         </div>
     )
 }
+

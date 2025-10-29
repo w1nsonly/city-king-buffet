@@ -1,4 +1,4 @@
-// components/common/Header.tsx
+// app/components/layout/Header.tsx
 
 'use client'
 import { Playfair_Display } from "next/font/google";
@@ -27,7 +27,7 @@ export default function Header() {
                 <Link href="/#home" className="flex items-center gap-2 sm:gap-3">
                     <div className="relative h-10 w-10 sm:h-10 sm:w-10 overflow-visible translate-x-1 sm:translate-x-0">
                         <Image 
-                            src="city-king-crown.svg" 
+                            src="/icons/city-king-crown.svg" 
                             alt="City King" fill 
                             className="object-contain transform scale-200 sm:scale-150 origin-center" 
                             priority 
@@ -77,7 +77,6 @@ export default function Header() {
                                 </ul>
                             </nav>
                         </>
-
                     )}
                 </div>
             </div>
@@ -85,3 +84,4 @@ export default function Header() {
 
     );
 }
+

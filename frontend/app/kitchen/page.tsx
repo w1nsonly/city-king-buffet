@@ -3,11 +3,9 @@
 'use client'
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import KitchenCategory from "@/components/menu/KitchenCategory";
-import { KitchenCategoryTypes, KitchenItemTypes } from "@/types";
-import ItemModal from "@/components/modal/ItemModal";
-import Header from "@/components/common/Header";
-import Footer from "@/components/common/Footer";
+import KitchenCategory from "./components/KitchenCategory";
+import { KitchenCategoryTypes, KitchenItemTypes } from "@/app/types";
+import ItemModal from "@/app/components/modal/ItemModal";
 import Link from "next/link";
 
 import { Playfair_Display } from "next/font/google";
@@ -59,9 +57,8 @@ export default function KitchenMenu() {
 
     return (
     <>
-        <Header />
         {/* page wrapper */}
-        <div className="w-full overflow-x-hidden bg-[url('/light-beige.jpg')] py-10">
+        <div className="w-full overflow-x-hidden bg-[url('/images/light-beige.jpg')] py-10">
             {/* top bar w/ back link */}
             <div className="w-full max-w-[1000px] mx-auto px-4 sm:px-6">
             <Link href="/#home" className="inline-flex items-center gap-2 px-4 py-2 bg-[#830e0e] text-[bisque] rounded-full shadow-md transition-all duration-200 hover:text-white hover:bg-[#a83232]">
@@ -108,7 +105,6 @@ export default function KitchenMenu() {
                 </div>
             </div>
         </div>
-        <Footer />
     </>
   );
 }

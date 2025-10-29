@@ -1,37 +1,39 @@
-// components/menu/BuffetCategory.tsx
+// app/kitchen/components/KitchenCategory.tsx
 
-import { BuffetItemTypes } from "@/types";
+import { KitchenItemTypes } from "@/app/types";
 import { Playfair_Display } from "next/font/google";
+import Image from "next/image";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-interface BuffetProps {
+interface KitchenProps {
     category: string;
-    subtitle?: string;
-    items: BuffetItemTypes[];
-    onClick: (item: BuffetItemTypes) => void;
+    subtitle?: string; // optional
+    items: KitchenItemTypes[];
+    onClick: (item: KitchenItemTypes) => void;
 }
 
-export default function BuffetCategory({ category, subtitle, items, onClick }: BuffetProps) {
+export default function KitchenCategory({ category, subtitle, items, onClick }: KitchenProps) {
 
-    return (
+
+  return (
     <div className="mb-6 w-full">
-       <h3 style={{ WebkitTextFillColor: "#000" }} className="text-2xl font-bold mb-2">
+        <h3 style={{ WebkitTextFillColor: "#000" }} className="text-2xl font-bold mb-2">
             <span className={`${playfair.className} border-b-2 border-[#830e0e]`}>
                 {category}
             </span>
         </h3>
-
+        
         {subtitle ? (
             <p style={{ WebkitTextFillColor: "#000" }} className="text-sm italic mb-1">{subtitle}</p>
         ) : null}
-        
-        <ul className="w-full">
+
+        <ul className="list-none p-0 m-0 w-full">
             {items.map((item) => (
                 <li
-                key={item.name}
+                key={item.id_number ?? item.name}
                 onClick={() => onClick(item)}
                 style={{ WebkitTextFillColor: "#000" }}
                 className={`
@@ -45,15 +47,28 @@ export default function BuffetCategory({ category, subtitle, items, onClick }: B
                 >
                 {/* name wraps, can shrink */}
                 <span className="flex-1 min-w-0 break-words">
+                    {item.id_number ? `${item.id_number}. ` : ""}
                     {item.name}
+                    {item.is_spicy && (
+                        <Image
+                            width={24}
+                            height={24}
+                            src="/icons/spicy-flame.svg"
+                            alt="Spicy"
+                            className="absolute ml-2 inline-block align-[-0.125rem]"
+                            loading="lazy"
+                        />
+                    )}
                 </span>
-                {/* price stays compact, never wraps/shrinks */}
+                {/* price stays compact */}
                 <span className="shrink-0 whitespace-nowrap pl-3 font-bold tabular-nums">
                     ${Number(item.price).toFixed(2)}
                 </span>
                 </li>
             ))}
         </ul>
+        
     </div>
     );
 }
+

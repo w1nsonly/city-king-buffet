@@ -1,11 +1,11 @@
-// components/sections/BuffetSection/BuffetSection.tsx
+// app/(home)/components/BuffetSection/BuffetSection.tsx
 
 'use client'
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import BuffetCategory from "@/components/menu/BuffetCategory";
-import { BuffetCategoryTypes, BuffetItemTypes } from "@/types";
-import ItemModal from "@/components/modal/ItemModal";
+import BuffetCategory from "./BuffetCategory";
+import { BuffetCategoryTypes, BuffetItemTypes } from "@/app/types";
+import ItemModal from "@/app/components/modal/ItemModal";
 import { Playfair_Display } from "next/font/google";
 
 const playfair = Playfair_Display({
@@ -39,7 +39,7 @@ export default function BuffetSection() {
                 setBuffetItems(itemsRes.data);
                 setCategoriesMeta(catsRes.data);
             } catch (err) {
-                console.error("Error fetching kitchen data:", err);
+                console.error("Error fetching buffet data:", err);
             }
         })();
     }, [API_BASE]);
@@ -58,7 +58,7 @@ export default function BuffetSection() {
     };
     return (
     
-    <section id="buffet" className="w-full overflow-x-hidden bg-[url('/light-beige.jpg')] py-10">
+    <section id="buffet" className="w-full overflow-x-hidden bg-[url('/images/light-beige.jpg')] py-10">
         <div className="w-full max-w-[62.5rem] mx-auto px-4 sm:px-6">
             <div className="p-[1.25rem] bg-[#fffdf5] shadow-[0_0.25rem_0.5rem_rgba(0,0,0,0.1)] rounded-[0.625rem]">
                 <h2 style={{ WebkitTextFillColor: "#000" }} className={`${playfair.className} text-center text-4xl font-bold mb-6`}>Buffet Menu</h2>
@@ -92,3 +92,4 @@ export default function BuffetSection() {
     </section>
     );
 }
+

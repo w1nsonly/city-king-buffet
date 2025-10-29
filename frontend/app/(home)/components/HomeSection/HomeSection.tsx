@@ -1,4 +1,4 @@
-// components/sections/HomeSection/HomeSection.tsx
+// app/(home)/components/HomeSection/HomeSection.tsx
 
 import styles from "./HomeSection.module.css";
 
@@ -6,7 +6,7 @@ export default function HomeSection() {
 
     return (
 
-        <section id="home" className="flex flex-col items-center justify-start w-full min-h-screen pt-10 sm:pt-20 gap-6 sm:gap-40 bg-[url('/city-king-buffet-1.jpg')] bg-cover bg-center bg-no-repeat px-4">
+        <section id="home" className="flex flex-col items-center justify-start w-full min-h-screen pt-10 sm:pt-20 gap-6 sm:gap-40 bg-[url('/images/city-king-buffet-1.jpg')] bg-cover bg-center bg-no-repeat px-4">
             <h2 className="text-center text-[calc(0.9375rem+3.5vw)] sm:text-[calc(0.25rem+3.5vw)] text-white font-bold mb-[4%] opacity-0 animate-[arcIn_1.4s_ease-out_forwards]">
                 City King Buffet
             </h2>
@@ -37,3 +37,4 @@ export default function HomeSection() {
         </section>
     );
 }
+
