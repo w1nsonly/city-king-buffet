@@ -20,9 +20,9 @@ HOURS = {
 
 # Prices
 PRICES = {
-    "adult_lunch":            11.99,
-    "adult_weekday_dinner":   14.99,
-    "adult_weekend_dinner":   15.99,
+    "adult_lunch":            12.99,
+    "adult_weekday_dinner":   15.99,
+    "adult_weekend_dinner":   16.99,
     "kid_3_5_lunch":           6.99,
     "kid_6_10_lunch":          7.99,
     "kid_3_5_dinner":          7.99,
