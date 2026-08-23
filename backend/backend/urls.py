@@ -18,13 +18,15 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.urls import path, include
 from restaurant.views import keepalive
+from django.views.generic import RedirectView
 
 def healthz(_):
     return HttpResponse("ok")
 
 urlpatterns = [
+    path("", RedirectView.as_view(url="/admin/", permanent=False)),
     path('admin/', admin.site.urls),
     path('restaurant/', include('restaurant.urls')),
     path("healthz/", healthz),
-     path('keepalive/', keepalive),
+    path('keepalive/', keepalive),
 ]
